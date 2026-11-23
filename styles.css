@@ -158,7 +158,7 @@ a {
   box-shadow:0 0 28px rgba(255,255,255,.19)
 }
 .button.primary:hover {
-  background:white;
+  background:rgb(255, 255, 255);
   box-shadow:var(--hover-glow)
 }
 /* Hero */
@@ -376,20 +376,26 @@ section {
   grid-template-columns:repeat(3,1fr);
   gap:16px
 }
+
 .project {
-  overflow:hidden;
-  border:1px solid var(--line);
-  border-radius:18px;
-  background:linear-gradient(145deg,rgba(255,255,255,.06),rgba(255,255,255,.018));
-  backdrop-filter:blur(20px);
-  transition:transform .6s ease-in-out,border-color .6s ease-in-out,box-shadow .6s ease-in-out,background .6s ease-in-out
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: linear-gradient(145deg, rgba(255,255,255,.06), rgba(255,255,255,.018));
+  backdrop-filter: blur(20px);
 }
-.project:hover {
-  transform:translateY(-5px);
-  border-color:#fff;
-  background:linear-gradient(145deg,rgba(255,255,255,.085),rgba(255,255,255,.035));
-  box-shadow:var(--hover-glow),0 15px 55px rgba(0,0,0,.25)
+/* beats the generic .reveal transition */
+.project.reveal {
+  transition: opacity .3s ease, transform .3s ease-in-out, border-color .3s ease-in-out, box-shadow .3s ease-in-out;
 }
+/* beats .reveal.visible's transform */
+.project:hover,
+.project.reveal.visible:hover {
+  transform: translateY(-5px);
+  border-color: #fff;
+  box-shadow: var(--hover-glow), 0 15px 55px rgba(0,0,0,.25);
+}
+
 .project-art {
   height:220px;
   position:relative;
@@ -398,50 +404,26 @@ section {
   overflow:hidden;
   background:#0c1117
 }
-.project-art:before,.project-art:after {
-  content:"";
-  position:absolute;
-  border:1px solid rgba(255,255,255,.14);
-  border-radius:50%;
-  width:210px;
-  height:210px;
-  transform:rotate(35deg) scaleY(.5)
+.project-art img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
-.project-art:after {
-  width:160px;
-  height:160px;
-  transform:rotate(-48deg) scaleY(.55);
-  border-color:rgba(85,242,223,.24)
+
+.project > a {
+  display: block;
 }
-.project-art .art-core {
-  width:84px;
-  height:84px;
-  z-index:1;
-  border-radius:24px;
-  transform:rotate(45deg);
-  border:1px solid rgba(255,255,255,.5);
-  background:linear-gradient(135deg,rgba(85,242,223,.28),rgba(255,255,255,.04) 55%,rgba(252,117,212,.24));
-  box-shadow:0 0 45px rgba(85,242,223,.12),inset 0 0 20px rgba(255,255,255,.18)
-}
+
 .project:nth-child(2) .project-art {
   background:#100d17
 }
-.project:nth-child(2) .art-core {
-  border-radius:50%;
-  transform:none;
-  background:radial-gradient(circle at 36% 30%,rgba(252,117,212,.4),rgba(255,255,255,.04) 68%);
-  box-shadow:0 0 50px rgba(252,117,212,.18)
-}
+
 .project:nth-child(3) .project-art {
   background:#0c1218
 }
-.project:nth-child(3) .art-core {
-  width:115px;
-  height:70px;
-  border-radius:14px;
-  transform:skewY(-12deg);
-  background:linear-gradient(135deg,rgba(85,242,223,.3),rgba(255,255,255,.04))
-}
+
 .project-tag {
   position:absolute;
   top:15px;
