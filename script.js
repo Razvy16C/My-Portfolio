@@ -27,3 +27,7 @@ if ('IntersectionObserver' in window) {
   // Keep content visible in browsers without IntersectionObserver.
   revealElements.forEach((element) => element.classList.add('visible'));
 }
+
+const btn = document.getElementById('kofiBtn');
+const panel = document.getElementById('kofiPanel');
+btn.addEventListener('click', () => { panel.hidden = !panel.hidden; });
